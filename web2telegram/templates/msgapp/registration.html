@@ -1,0 +1,20 @@
+{% extends 'msgapp/base.html' %} {% load static %} {% block body_block %} 
+{# Load the tag library #}
+{% load bootstrap5 %}
+<div class="jumbotron">
+  {% if registered %}
+    <h1>Thank you for registering!</h1>
+  {% else %}
+    <h1>Register</h1>
+    <h3>Fill out the form below:</h3>
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form user_form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-success">Register</button>
+        {% endbuttons %} 
+    </form>
+
+  {% endif %}
+</div>
+{% endblock %}

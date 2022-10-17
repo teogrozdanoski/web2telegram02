@@ -1,0 +1,17 @@
+{% extends 'msgapp/base.html' %} {% load static %} {% block body_block %}
+<div class="jumbotron">
+    <h1>View Telegram bot details</h1>
+    <dl class="row">
+        <dt class="col-sm-3">Telegram Bot name:</dt>
+        <dd class="col-sm-9">{{ detail_telegram_bot.bot_name }}</dd>
+
+        <dt class="col-sm-3">Bot API key:</dt>
+        <dd class="col-sm-9">{{ detail_telegram_bot.api_key }}</dd>
+      </dl>
+</div>
+<div class="container">
+  <span><a class="btn btn-primary" href="{% url 'view_t_bots' %}">View all</a></span>
+  <span><a class="btn btn-danger float-right ml-2" href="{% url 'delete_t_bot' pk=detail_telegram_bot.pk %}">Delete</a></span>
+  <span><a class="btn btn-warning float-right" href="{% url 'update_t_bot' pk=detail_telegram_bot.pk %}">Update</a></span>
+</div>
+{% endblock %}

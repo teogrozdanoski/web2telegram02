@@ -1,0 +1,34 @@
+{% extends 'msgapp/base.html' %} {% load static %} {% block body_block %}
+<div class="jumbotron">
+    <h1>All my messages</h1>
+    {% if not short_messages %}
+    <h2>No messages to display</h2>
+
+    {% else %}
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <!-- <th scope="col">Client message ID</th> -->
+                <th scope="col">Message text</th>
+                <th scope="col">Recipient</th>
+                <th scope="col">Via bot</th>
+                <th scope="col">Sent time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in short_messages %}
+            <tr>
+                <th scope="row"><a href="{{ msg.id }}">{{ forloop.counter }}</a></th>
+                <!-- <td>{{ msg.message_id }}</td> -->
+                <td>{{ msg.msg_text }}</td>
+                <td>{{ msg.recipient_id }}</td>
+                <td>{{ msg.telegram_bot_id }}</td>
+                <td>{{ msg.send_date|date:'H:i d.m.Y' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'msgapp/base.html' %} {% load static %} {% block body_block %}
+<div class="jumbotron">
+    <h1>All Telegram bots</h1>
+    {% if not telegram_bots %}
+    <h2>No Telegram bots to display</h2>
+
+    {% else %}
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <!-- <th scope="col">Client message ID</th> -->
+                <th scope="col">Bot name</th>
+                <th scope="col">API Key</th>
+                <th scope="col">Total messages sent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tbot in telegram_bots %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <!-- <td>{{ msg.message_id }}</td> -->
+                <td><a href="{{ tbot.id }}">{{ tbot.bot_name }}</a></td>
+                <td>{{ tbot.api_key }}</td>
+                <td>{{ tbot.sent_via_bot }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+<div class="container">
+    <span><a class="btn btn-success" href="{% url 'add_t_bot' %}">Add new Telegram bot</a></span>
+</div>
+{% endblock %}

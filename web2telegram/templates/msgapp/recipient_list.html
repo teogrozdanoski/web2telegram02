@@ -1,0 +1,33 @@
+{% extends 'msgapp/base.html' %} {% load static %} {% block body_block %}
+<div class="jumbotron">
+    <h1>All recipients</h1>
+    {% if not recipients %}
+    <h2>No recipients to display</h2>
+
+    {% else %}
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <!-- <th scope="col">Client message ID</th> -->
+                <th scope="col">Recipient Telegram ID</th>
+                <th scope="col">Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipient in recipients %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <!-- <td>{{ msg.message_id }}</td> -->
+                <td><a href="{{ recipient.id }}">{{ recipient.telegram_id }}</a></td>
+                <td>{{ recipient.username }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+<div class="container">
+    <span><a class="btn btn-success" href="{% url 'add_t_recipient' %}">Add new Telegram recipient</a></span>
+</div>
+{% endblock %}

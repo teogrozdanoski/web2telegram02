@@ -1,0 +1,10 @@
+{% extends 'msgapp/base.html' %} {% load static %} {% block body_block %}
+<div class="jumbotron">
+    <h1>Delete {{ recipient.username }}?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a href="{% url 'detail_recipient' pk=recipient.pk %}" class="btn btn-primary">Cancel</a>
+    </form>
+</div>
+{% endblock %}  

@@ -1,0 +1,17 @@
+{% extends 'msgapp/base.html' %} {% load static %} {% block body_block %}
+<div class="jumbotron">
+    <h1>View Telegram recipient details</h1>
+    <dl class="row">
+        <dt class="col-sm-3">Recipient Telegram ID:</dt>
+        <dd class="col-sm-9">{{ detail_recipient.telegram_id }}</dd>
+
+        <dt class="col-sm-3">Username:</dt>
+        <dd class="col-sm-9">{{ detail_recipient.username }}</dd>
+      </dl>
+</div>
+<div class="container">
+  <span><a class="btn btn-primary" href="{% url 'view_recipients' %}">View all</a></span>
+  <span><a class="btn btn-danger float-right ml-2" href="{% url 'delete_recipient' pk=detail_recipient.pk %}">Delete</a></span>
+  <span><a class="btn btn-warning float-right" href="{% url 'update_recipient' pk=detail_recipient.pk %}">Update</a></span>
+</div>
+{% endblock %}  

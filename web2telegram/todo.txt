@@ -1,0 +1,13 @@
+1. Create and setup multitenant environment
+  -- possible extra steps
+1a. Swap to ClassBasedViews
+2. DONE Add manual bot creation form
+3. DONE Add manual recipient createion form
+4. Add bot list
+5. Add bot removal
+6. Add recipient list
+7. Add recipient removal
+
+..8. Push to github
+..9. Host on web
+.. DONE

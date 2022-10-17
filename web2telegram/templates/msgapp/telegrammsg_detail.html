@@ -1,0 +1,21 @@
+{% extends 'msgapp/base.html' %} {% load static %} {% block body_block %}
+<div class="jumbotron">
+    <h1>View message details</h1>
+    <dl class="row">
+        <dt class="col-sm-3">Message ID:</dt>
+        <dd class="col-sm-9">{{ detail_messages.message_id }}</dd>
+
+        <dt class="col-sm-3">Message text:</dt>
+        <dd class="col-sm-9">{{ detail_messages.msg_text }}</dd>
+      
+        <dt class="col-sm-3">Recipient user:</dt>
+        <dd class="col-sm-9">{{ detail_messages.recipient_id }}</dd>
+      
+        <dt class="col-sm-3">Sender bot:</dt>
+        <dd class="col-sm-9">{{ detail_messages.telegram_bot_id }}</dd>
+
+        <dt class="col-sm-3">Send datetime:</dt>
+        <dd class="col-sm-9">{{ detail_messages.send_date|date:'H:i d.m.Y' }}</dd>
+      </dl>
+</div>
+{% endblock %}

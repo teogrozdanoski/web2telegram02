@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- load CSS via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- load JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">Web2Telegram</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            
+          {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-expanded="false"
+                >Control panel</a
+              >
+              
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'view_t_bots' %}">Telegram bots</a></li>
+                <li><a class="dropdown-item" href="{% url 'view_recipients' %}">Recipients</a></li>
+              </ul>
+            </li>   
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'send' %}">Send message</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'view_msgs' %}">View messages</a>
+            </li>            
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+            <li class="nav-item float-right">
+              <a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
+            </li>
+          </ul>
+          {% else %}
+          
+        </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item float-right">
+              <a class="nav-link" href="{% url 'user_login' %}">Login</a>
+            </li>
+            <li class="nav-item float-right">
+              <a class="nav-link" href="{% url 'user_register' %}">Register</a>
+            </li>
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">{% block body_block %} {% endblock %}</div>
+
+    <!-- Footer nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+      <div class="container d-flex justify-content-center">
+        <span style="color: white"><strong>web2telegram</strong> | <i>Teo Grozdanoski</i></span>
+      </div>
+    </nav>
+    <!-- End Footer -->
+  </body>
+</html>
